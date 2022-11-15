@@ -33,6 +33,21 @@ ChartJS.register(
         },
 
     },
+    scales: {
+        x:{
+          grid:{
+            display: false,
+            width: 10
+          }
+        },
+        y:{
+            display: false,
+            grid:{
+              display: false,
+              width: 10
+            }
+          }
+      }
 };
 
 const Gold = barCustomSeries.filter(item => item.name === "Gold").map(it => it.dataSource)

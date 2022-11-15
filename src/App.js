@@ -16,10 +16,12 @@ import BarChartPage from './Pages/charts/BarChartPage';
 import PieChartPage from './Pages/charts/PieChartPage';
 import FinancialPage from './Pages/charts/FinancialPage';
 import ColorMaping from './Pages/charts/ColorMaping';
+import StackedChartPage from './Pages/charts/stackedChartPage';
+import Kanban from './Pages/Kanban';
 
 function App() {
 
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, setActiveMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, screenSize } = useStateContext();
   const { Header, Footer, Sider, Content } = Layout;
 
   useEffect(() => {
@@ -41,19 +43,21 @@ function App() {
             trigger={null}
             collapsedWidth={0}
             width={300}
+            
             style={{
               overflow: 'auto',
               height: '100vh',
-              position: 'fixed',
+              zIndex: '100',
               left: 0,
               top: 0,
               bottom: 0,
+              display: screenSize < 700 ? "none" : ''
             }}
           >
             <Sidbar />
           </Sider>
           <Layout
-            className={`${activeMenu ? "" : "margin"}`}
+            
           >
             <Header
               className={`${currentMode === 'Dark' ? 'dark' : 'bg-transparent'}`}
@@ -82,6 +86,8 @@ function App() {
                     <Route path="/pie" element={(<PieChartPage />)} />
                     <Route path="/financial" element={(<FinancialPage />)} />
                     <Route path="/color-mapping" element={(<ColorMaping />)} />
+                    <Route path="/stacked" element={(<StackedChartPage />)} />
+                    <Route path="/Kanban" element={(<Kanban />)} />
 
                   </Routes>
                 </Col>

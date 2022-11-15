@@ -20,6 +20,14 @@ const LineChart = () => {
           },
           
         },
+        scales: {
+            x:{
+              grid:{
+                display: false,
+
+              }
+            }
+          }
       };
 
 

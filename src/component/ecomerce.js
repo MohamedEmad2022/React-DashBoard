@@ -24,8 +24,8 @@ const Ecomerce = () => {
 
     return (
       <Select defaultValue={dropdownData[0].Time}>
-        {dropdownData.map(item => {
-          return <Option value={item.Id}>{item.Time}</Option>
+        {dropdownData.map((item, ind) => {
+          return <Option key={ind} value={item.Id}>{item.Time}</Option>
         })}
       </Select>
     )
@@ -39,9 +39,9 @@ const Ecomerce = () => {
         header={header}
         footer={footer}
       >
-        {data.map(item => {
+        {data.map((item, ind) => {
           return (
-            <Row justify="space-between">
+            <Row key={ind} justify="space-between">
               <Col span={24}>
                 <List.Item className={cb}>
                   <Col span={18}>
@@ -79,14 +79,14 @@ const Ecomerce = () => {
         <Row>
           <Col>
             <Row justify="space-between">
-              <Col sm={22} md={24} lg={6}>
+              <Col xl={6} md={8}>
                 <Card
-                  className={`rounded-4 ${cb}`}
+                  className={`rounded-4 mt-1 ${cb}`}
                   bordered={false}
 
                 >
 
-                  <Row>
+                  <Row justify="space-between">
                     <Col span={13}>
                       <Row>
                         <Col span={24}>
@@ -97,7 +97,7 @@ const Ecomerce = () => {
                         </Col>
                       </Row>
                     </Col>
-                    <Col span={10}>
+                    <Col>
                       <Avatar size={64} style={{
                         backgroundColor: '#87d068',
                       }} icon={<BsCurrencyDollar />} />
@@ -113,11 +113,11 @@ const Ecomerce = () => {
 
               </Col>
 
-              <Col sm={20} md={22} lg={16}>
-                <Row justify="space-between" gutter={4}>
-                  {earningData.map((item) => (
-                    <Col span={6}>
-                      <Card key={item.title} className={`rounded-4 ${cb}`} bordered={false}>
+              <Col xl={17} md={15}>
+                <Row justify="center">
+                  {earningData.map((item, ind) => (
+                    <Col key={ind} xl={6} md={10}>
+                      <Card key={item.title} className={`rounded-4 m-1 ${cb}`} bordered={false}>
 
                         <Row>
                           <Col span={24}>
@@ -154,9 +154,9 @@ const Ecomerce = () => {
         </Row>
 
         <Row justify='center'>
-          <Col span={24}>
+          <Col xl={24} md={20}>
             <Row justify='space-between'>
-              <Col className='mt-4' span={17}>
+              <Col className='mt-4' xl={16} md={24}>
 
                 <Card className={`shadow-sm rounded-4 ${cb}`} bordered={false}>
                   <Row>
@@ -164,7 +164,7 @@ const Ecomerce = () => {
                       <p className='h5'> Revenue Updates </p>
                     </Col>
 
-                    <Col span={10} className='border-end border-dark p-4'>
+                    <Col xl={10} md={24} className='border-end border-dark p-4'>
                       <p className='mb-0'>
                         <span className="h5 pe-2">$93,438</span>
                         <Avatar style={{ backgroundColor: '#87d068' }} >23%</Avatar>
@@ -178,7 +178,7 @@ const Ecomerce = () => {
                       <p className='text-black-400 '>Expense</p>
                       <SparkLineChart />
                     </Col>
-                    <Col span={14} className='p-4'>
+                    <Col xl={14} md={24} className='p-4'>
 
                       <StackedChart />
                     </Col>
@@ -186,9 +186,9 @@ const Ecomerce = () => {
                   </Row>
                 </Card>
               </Col>
-              <Col span={6}>
-                <Row>
-                  <Col span={24} className='mt-4'>
+              <Col xl={7} md={24} sm={24}>
+                <Row justify="space-between">
+                  <Col xl={24} md={11} className='mt-4'>
                     <Card bodyStyle={{ backgroundColor: '#4d94ff', borderRadius: "17px"}}
                       className="shadow-sm bg-body rounded-4"
                       bordered={false}
@@ -205,8 +205,8 @@ const Ecomerce = () => {
                       <BarChart data={SparklineAreaData} />
                     </Card>
                   </Col>
-                  <Col className='mt-4' span={24}>
-                    <Card className={`rounded-4 ${cb}`}
+                  <Col className='mt-4' xl={24} md={11}>
+                    <Card className={`rounded-4 h-100 ${cb}`}
                       bordered={false}
                     >
                       <Row>
@@ -228,10 +228,10 @@ const Ecomerce = () => {
 
         </Row>
 
-        <Row>
-          <Col span={24}>
+        <Row justify='center'>
+          <Col xl={24} md={20}>
             <Row justify="space-between">
-              <Col className='mt-4' span={10}>
+              <Col className='mt-4' xl={10} md={24} sm={24}>
                 <Card className={`rounded-4 ${cb}`} bordered={false}>
 
                   <Lists data={recentTransactions}
@@ -259,7 +259,7 @@ const Ecomerce = () => {
 
                 </Card>
               </Col>
-              <Col className='mt-4' span={13} >
+              <Col className='mt-4' xl={13} md={24} >
                 <Card className={`shadow-sm rounded-4 h-100 ${cb}`} bordered={false}>
                   <Row>
                     <Col span={24}>
@@ -284,10 +284,10 @@ const Ecomerce = () => {
           </Col>
         </Row>
 
-        <Row>
-          <Col span={24}>
-            <Row justify="space-between">
-              <Col className='mt-4' span={7}>
+        <Row justify='center'>
+          <Col xl={24} md={20}>
+            <Row justify="space-between" gutter={3}>
+              <Col className='mt-4' xl={7} md={12} sm={24}>
                 <Card className={`shadow-sm rounded-4 ${cb}`} bordered={false}>
                   <Lists data={weeklyStats}
                     header={
@@ -313,7 +313,7 @@ const Ecomerce = () => {
                 </Card>
               </Col>
 
-              <Col span={7} className='mt-4'>
+              <Col xl={7} md={12} sm={24} className='mt-4'>
                 <Card className={`shadow-sm rounded-4 h-100 ${cb}`} bordered={false}>
                   <Row align='middle'>
                     <Col span={24}>
@@ -333,8 +333,8 @@ const Ecomerce = () => {
                     </Col>
                     <Col span={24} className='mt-3 mb-2 border-bottom border-gray'>
                       <Row>
-                        {medicalproBranding.data.map(item => (
-                          <Col className='p-2 border-end border-gray'>
+                        {medicalproBranding.data.map((item, ind) => (
+                          <Col key={ind} className='p-2 border-end border-gray'>
                             <p className='text-muted m-0'>{item.title}</p>
                             <p className='m-0'>{item.desc}</p>
                           </Col>
@@ -346,8 +346,8 @@ const Ecomerce = () => {
                     </Col>
                     <Col span={24} className='p-2 ps-0 mb-2 border-bottom border-gray'>
                       <Row>
-                        {medicalproBranding.teams.map(item => (
-                          <Col><Tag color={item.color}>{item.name}</Tag></Col>
+                        {medicalproBranding.teams.map((item, ind) => (
+                          <Col key={ind}><Tag color={item.color}>{item.name}</Tag></Col>
                         ))}
                       </Row>
                     </Col>
@@ -356,8 +356,8 @@ const Ecomerce = () => {
                     </Col>
                     <Col span={24} className='p-2 ps-0 mb-2 border-bottom border-gray'>
                       <Row className='mb-3'>
-                        {medicalproBranding.leaders.map(item => (
-                          <Col><Avatar className='me-3' src={item.image}></Avatar></Col>
+                        {medicalproBranding.leaders.map((item, ind) => (
+                          <Avatar key={ind} className='me-2' src={item.image}></Avatar>
                         ))}
                       </Row>
                     </Col>
@@ -374,7 +374,7 @@ const Ecomerce = () => {
                   </Row>
                 </Card>
               </Col>
-              <Col className='mt-4' span={7}>
+              <Col className='mt-4' xl={7} md={12} sm={24}>
                 <Card className={`shadow-sm rounded-4 h-100 ${cb}`} bordered={false}>
                   <Row>
                     <Col span={24}>

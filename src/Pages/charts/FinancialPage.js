@@ -7,7 +7,7 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
-  import { Bubble } from 'react-chartjs-2';
+  import { Line } from 'react-chartjs-2';
   
   ChartJS.register(LinearScale, PointElement, Tooltip, Legend);
   
@@ -23,16 +23,43 @@ function filterValue(value) {
   const returnValue = financialChartData.filter(filterValue);
 
    const options = {
-    
-  };
+    spanGaps: 1000 * 60 * 60 * 24 * 2, // 2 days
+    responsive: true,
+    interaction: {
+      mode: 'nearest',
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Time - spanGaps: 172800000 (2 days in ms)'
+      },
+    },
+    // scales: {
+    //   x: {
+    //     max: FinancialPrimaryXAxis.maximum,
+    //     min: FinancialPrimaryXAxis.minimum,
+    //     type: FinancialPrimaryXAxis.valueType,
+    //     display: true,
+        
+    //     ticks: {
+    //       autoSkip: false,
+    //       maxRotation: 0,
+    //       major: {
+    //         enabled: true
+    //       },
+    //     }
+    //   }
+    // }
+      
+  }
 
-const labels = returnValue.map(it => it.x)
-
+const labels = returnValue.map(it => it.x.getMonth())
+// console.log(new Set(returnValue.map(it => new Date(it.x))))
 const da = returnValue.map(it =>{
     return{
-        x:it.x.getMonth(),
-        y: it.high,
-        r: it.low,
+        x:it.x.getFullYear(),
+        y: it.low,
+        
          
     }
 })
@@ -43,7 +70,7 @@ const da = returnValue.map(it =>{
         
         data: da,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        pointStyle: 'line',
+       
 
         
       },
@@ -56,7 +83,7 @@ const da = returnValue.map(it =>{
 const FinancialPage = () => {
   return (
     <div>
-        <Bubble data={data} options={options}/>
+        <Line data={data} options={options} />
     </div>
   )
 }

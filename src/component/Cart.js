@@ -1,21 +1,24 @@
 import { Avatar, List, Menu } from 'antd'
 import React from 'react'
+import { useStateContext } from '../Context/ContextProvider';
 import { cartData } from '../data/dummy';
 
 const Cart = () => {
+    const {currentMode} = useStateContext()
+  const cb = currentMode === 'Dark' ? 'text-bg-dark' : 'text-bg-light'
     return (
         <div>
             <List
                 itemLayout="horizontal"
                 dataSource={cartData}
-                renderItem={(item) => (
-                    <List.Item>
+                renderItem={(item, ind) => (
+                    <List.Item key={ind}>
                         <List.Item.Meta
                             avatar={<Avatar size={100} src={item.image} />}
-                            title={item.name}
-                            description={item.category}
+                            title={<p style={{color: 'rgb(94 126 139)'}}>{item.name}</p>}
+                            description={<p className='text-muted'>{item.category}</p>}
                         />
-                        <span>{item.price}</span>
+                        <p style={{color: 'rgb(94 126 139)'}}>{item.price}</p>
                     </List.Item>
                 )}
             />

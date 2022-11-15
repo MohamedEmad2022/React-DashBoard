@@ -11,6 +11,9 @@ import {
 import { pieChartData } from '../../data/dummy';
 
 import { Doughnut } from 'react-chartjs-2';
+import { useStateContext } from '../../Context/ContextProvider';
+import { Card, Col, Row } from 'antd';
+import ChartHeader from '../../component/ChartHeader';
 
 
 ChartJS.register(
@@ -22,6 +25,8 @@ ChartJS.register(
     Legend
 );
 const PieChartPage = () => {
+    const {currentMode} = useStateContext()
+    const cb = currentMode === 'Dark' ? 'text-bg-dark' : 'text-bg-light'
      const options = {
         responsive: true,
         plugins: {
@@ -34,9 +39,11 @@ const PieChartPage = () => {
       const labels = pieChartData.map((item) => item.x)
       
     return (
-        <div style={{width: "400px", height: "400px", margin: "auto"}}>
-            
-
+        <Card className={cb} bordered={false}>
+      <ChartHeader title="Project Cost Breakdown" category="Pie" />
+        
+        <Row justify='center'>
+            <Col span={15}>
             <Doughnut
             
             options={options}
@@ -46,10 +53,13 @@ const PieChartPage = () => {
 
                         data: pieChartData.map((item) => item.y),
                         backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)',
-                            
+                            "#79d2a6",
+                            '#1f1f14',
+                            '#008ae6',
+                            '#cc0099',
+                            '#ff9933',
+                            '#009933',
+                            '#ffb3b3'
                         ],
                         hoverOffset: 14,
                         
@@ -58,7 +68,9 @@ const PieChartPage = () => {
 
                 }}
             />
-        </div>
+            </Col>
+            </Row>
+        </Card>
     )
 }
 

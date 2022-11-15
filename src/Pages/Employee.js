@@ -54,6 +54,8 @@ const Employees = () => {
     const [form] = Form.useForm();
   const [data, setData] = useState(dataWithKeys);
   const [editingKey, setEditingKey] = useState('')
+  const [searchText, setSearchText] = useState('')
+
     const { Column } = Table;
     
     const employeesGridWithEditable = employeesGrid.map((item, index) => {
@@ -65,9 +67,8 @@ const Employees = () => {
           key: index,
           render: item.template,
           sorter: item.sorting,
-          onCell: (item)=>({
-            colSpan: item.headerText==='Employee'? 2 : 0
-          })
+          filteredValue: [searchText],
+          onFilter: item.onFilter
         }
         
         
@@ -75,7 +76,8 @@ const Employees = () => {
 
       const isEditing = (record) => record.key === editingKey;
 
-      const colm = [...employeesGridWithEditable,
+      const colm = [
+        ...employeesGridWithEditable,
 
         {
           title: 'operation',
@@ -141,10 +143,24 @@ const Employees = () => {
                 dataIndex: col.dataIndex,
                 title: col.title,
                 editing: isEditing(record),
-        
+                
               }),
             };
           });
+
+
+          const onSearch = (value) => {
+
+            // setSearchText(value)
+            
+            return employeesData.map(item => item.Name.includes(value))
+            // if(value){
+            //   setData(filtering)
+            // }else{
+            //   setData(data)
+            // }
+          };
+
         
     
     return (
@@ -156,6 +172,7 @@ const Employees = () => {
                   <>
                     <p className='text-muted m-0'>Page</p>
                     <h3>Employees</h3>
+                    <Input.Search placeholder='Search' onSearch={onSearch} />
                   </>
                 )
               }}
@@ -166,18 +183,17 @@ const Employees = () => {
                       cell: EditableCell,
                     },
                   }}
+                  scroll={{
+                    x: "auto",
+                  }}
+
+
+                  expandable={{
+                    showExpandColumn: true
+                  }}
+              
             >
                 
-                {/* {employeesGrid.map(col => {
-                    if(col.field === "Name"){
-                        return
-                    }else{
-                         return (
-                        <Column title={col.headerText} sorter={col.sorting} dataIndex={col.field} key={col.headerText} render={col.template}/>
-                    )
-                    }
-                   
-                })} */}
             </Table>
             </Form>
         </div>

@@ -21,17 +21,13 @@ import {
 const StackedChart = () => {
 
      const options = {
-        scales:{
-            xAxis: {
-                stackedPrimaryXAxis
-            },
-            yAxis:{
-                stackedPrimaryYAxis
-            }
-        },
+        
         responsive: true,
         scales: {
           x: {
+            grid:{
+              display: false
+            },
             stacked: true,
           },
           y: {

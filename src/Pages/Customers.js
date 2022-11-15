@@ -1,62 +1,46 @@
-import { Table } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
+import { Button, Table } from 'antd';
 
 import React, { useState } from 'react'
 import { customersData, customersGrid } from '../data/dummy';
 
 
+
+const dataWithKeys = customersData.map((item, index)=>{
+  return {...item, key: index}
+})
+
 const Customer = () => {
     const { Column } = Table;
 
-    const dataWithKeys = customersData.map((item, index)=>{
-      return {...item, key: index}
-    })
-    
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+    const [data, setData] = useState(dataWithKeys)
+
+    
+    
+    
 
     
     const onSelectChange = (newSelectedRowKeys) => {
-        console.log('selectedRowKeys changed: ', selectedRowKeys);
+        
         setSelectedRowKeys(newSelectedRowKeys);
+        
       };
       const rowSelection = {
         selectedRowKeys,
         onChange: onSelectChange,
-        selections: [
-          Table.SELECTION_ALL,
-          Table.SELECTION_INVERT,
-          Table.SELECTION_NONE,
-          {
-            key: 'odd',
-            text: 'Select Odd Row',
-            onSelect: (changableRowKeys) => {
-              let newSelectedRowKeys = [];
-              newSelectedRowKeys = changableRowKeys.filter((_, index) => {
-                if (index % 2 !== 0) {
-                  return false;
-                }
-    
-                return true;
-              });
-              setSelectedRowKeys(newSelectedRowKeys);
-            },
-          },
-          {
-            key: 'even',
-            text: 'Select Even Row',
-            onSelect: (changableRowKeys) => {
-              let newSelectedRowKeys = [];
-              newSelectedRowKeys = changableRowKeys.filter((_, index) => {
-                if (index % 2 !== 0) {
-                  return true;
-                }
-    
-                return false;
-              });
-              setSelectedRowKeys(newSelectedRowKeys);
-            },
-          },
-        ],
+        
       };
+      const hasSelected = selectedRowKeys.length > 0;
+
+      const delHandeler = ()=>{
+        if(hasSelected){
+          const del = data.filter(item =>(
+             item.key !== selectedRowKeys.map(it => it)
+          ))
+          setData(del)
+        }
+      }
     
     return (
         <div className='m-3'>
@@ -66,12 +50,15 @@ const Customer = () => {
                 <>
                   <p className='text-muted m-0'>Page</p>
                   <h3>Customers</h3>
+                  <Button onClick={delHandeler} disabled={!hasSelected} icon={<DeleteOutlined />}>Delete</Button>
                 </>
               )
             }}
-                dataSource={dataWithKeys} 
+                dataSource={data} 
                 rowSelection={rowSelection}
-                
+                scroll={{
+                  x: "auto",
+                }}
             >
                 {customersGrid.map((col, ind) => {
                     return (

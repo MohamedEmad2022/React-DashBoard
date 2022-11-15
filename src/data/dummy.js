@@ -46,25 +46,29 @@ export const kanbanGrid = [
   {
     headerText: 'To Do',
     keyField: 'Open',
+    Summary: "Summary",
     allowToggle: true
   },
 
   {
     headerText: 'In Progress',
     keyField: 'InProgress',
-    allowToggle: true
+    allowToggle: true,
+    Summary: "Summary",
   },
 
   {
     headerText: 'Testing',
     keyField: 'Testing',
     allowToggle: true,
+    Summary: "Summary",
     isExpanded: false
   },
 
   {
     headerText: 'Done',
     keyField: 'Close',
+    Summary: "Summary",
     allowToggle: true
   },
 ];
@@ -472,7 +476,7 @@ export const employeesGrid = [
     headerText: 'Employee',
     width: '150',
     template: gridEmployeeProfile,
-    textAlign: 'Center'
+    textAlign: 'Center',
   },
   
   {
@@ -554,14 +558,7 @@ export const links = [
         name: 'kanban',
         icon: <BsKanban />,
       },
-      {
-        name: 'editor',
-        icon: <FiEdit />,
-      },
-      {
-        name: 'color-picker',
-        icon: <BiColorFill />,
-      },
+      
     ],
   },
   {
@@ -584,18 +581,12 @@ export const links = [
         name: 'pie',
         icon: <FiPieChart />,
       },
-      {
-        name: 'financial',
-        icon: <RiStockLine />,
-      },
+      
       {
         name: 'color-mapping',
         icon: <BsBarChart />,
       },
-      {
-        name: 'pyramid',
-        icon: <GiLouvrePyramid />,
-      },
+      
       {
         name: 'stacked',
         icon: <AiOutlineBarChart />,

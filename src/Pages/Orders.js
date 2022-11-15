@@ -185,6 +185,10 @@ const Orders = () => {
               cell: EditableCell,
             },
           }}
+          scroll={{
+            x: "auto",
+          }}
+      
         />
 
 

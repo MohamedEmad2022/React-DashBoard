@@ -5,7 +5,7 @@ import { useStateContext } from '../Context/ContextProvider';
 
 const SideBar = () => {
     const { currentMode } = useStateContext();
-    
+
 
 
     return (
@@ -13,22 +13,21 @@ const SideBar = () => {
 
             <div className='w-auto'>
 
-                    {links.map((item) => (
-                        <>
-                            <Menu key={item.title}
-                                theme={currentMode === 'Dark' ? 'dark' : 'light '}
-                                className='ps-3'
+
+                <>
+                    <Menu 
+                        theme={currentMode === 'Dark' ? 'dark' : 'light '}
+                        className='ps-3'
+                    >
+                        {links.map((item) => (
+
+                            <Menu.ItemGroup key={item.title} title={item.title}
+
                             >
-
-                                <Menu.ItemGroup title={item.title}
-                                
-                                >
-
-                                </Menu.ItemGroup>
                                 {item.links.map((link) => (
                                     <Menu.Item key={link.name} icon={link.icon} style={{ fontSize: '17px ', textTransform: 'capitalize' }}>
                                         <Link
-                                           to={`/${link.name}`}
+                                            to={`/${link.name}`}
                                         >
                                             {link.name}
                                         </Link>
@@ -36,15 +35,18 @@ const SideBar = () => {
                                     </Menu.Item>
 
                                 ))}
-                            </Menu>
+                            </Menu.ItemGroup>
 
-                            
-                        </>
-                    ))}
-              
+                        ))}
+                    </Menu>
 
-           
-              </div>
+
+                </>
+
+
+
+
+            </div>
 
         </>
     )

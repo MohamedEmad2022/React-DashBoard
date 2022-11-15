@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { useStateContext } from '../Context/ContextProvider';
 import Cart from './Cart';
 import Chats from './Chats';
+import SideBar from './sidebar';
 import Notification from './Notification';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { CloseOutlined } from '@ant-design/icons';
 
 
 const NavBar = () => {
@@ -20,9 +22,9 @@ const NavBar = () => {
 
 
     const drawer = () => {
-        const cb = currentMode === 'Dark' ? 'text-bg-dark' : 'text-bg-light'
-        
-        const components = { Cart, Chats, Notification }
+        const cb = currentMode === 'Dark' ? 'text-bg-#001529' : 'text-bg-light'
+
+        const components = { Cart, Chats, Notification, SideBar }
         let renderComponent;
         if (component) {
             const SelectedComponent = components[component]
@@ -32,9 +34,10 @@ const NavBar = () => {
         }
         return (
 
-            <Drawer drawerStyle={{backgroundColor: currentMode==="Dark" ? "#212529" : ""}} placement="right" onClose={onClose} open={open} mask={false}
+            <Drawer drawerStyle={{ backgroundColor: currentMode === "Dark" ? "#001529" : "" }} placement={component ==="SideBar" ? "left" : "right"} onClose={onClose} open={open} mask={false}
+                closeIcon={<CloseOutlined style={{background: '#00cc99', borderRadius: "50%", padding: "3px"}} />}
+                closable={true}
                 
-
             >
                 {renderComponent}
             </Drawer>
@@ -44,7 +47,7 @@ const NavBar = () => {
     const NavButton = ({ title, customFunc, icon }) => (
         <Tooltip title={title} placement="bottom">
             <i
-                style={{fontSize: '20px', marginRight: '10px'}}
+                style={{ fontSize: '20px', marginRight: '10px' }}
                 type="button"
                 onClick={() => customFunc()}
 
@@ -87,7 +90,7 @@ const NavBar = () => {
     }, []);
 
     useEffect(() => {
-        if (screenSize <= 980) {
+        if (screenSize <= 995) {
             setActiveMenu(true);
         } else {
             setActiveMenu(false);
@@ -96,13 +99,22 @@ const NavBar = () => {
 
     const onChange = (checked) => {
         if (checked) {
-            
+
             setMode('Dark')
         } else {
-            
+
             setMode('Light')
         }
     };
+
+    const menuHandel = () => {
+        if (screenSize < 900) {
+            setOpen(true);
+            setComponent("SideBar")
+        }else{
+            setActiveMenu(!activeMenu)
+        }
+    }
 
     return (
 
@@ -112,8 +124,8 @@ const NavBar = () => {
             <Row justify='space-between'>
 
                 <Col>
-                    <NavButton title="Menu" customFunc={() => setActiveMenu(!activeMenu)} icon={<AiOutlineMenu />} />
-                    <Switch checked={currentMode ==="Dark"? true: false} onChange={onChange} style={{ marginLeft: "10px" }} />
+                    <NavButton title="Menu" customFunc={menuHandel} icon={<AiOutlineMenu />} />
+                    <Switch checkedChildren="Light Mode" unCheckedChildren="Dark Mode" checked={currentMode === "Dark" ? true : false} onChange={onChange} style={{ marginLeft: "10px" }} />
 
                 </Col>
                 <Col>

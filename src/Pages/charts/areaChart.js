@@ -36,6 +36,14 @@ const options = {
     },
     
   },
+  scales: {
+    x:{
+      grid:{
+        display: false,
+        width: 10
+      }
+    }
+  }
 };
 const USA = areaCustomSeries.filter(item => item.name === "USA").map(it => it.dataSource)
 const France = areaCustomSeries.filter(item => item.name === "France").map(it => it.dataSource)
@@ -52,8 +60,9 @@ const data = {
       data: USA[0],
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      tension: 0.3,
+      showLine: false
       
-      borderWidth: 0
     },
     {
       fill: true,
@@ -61,8 +70,8 @@ const data = {
       data: France[0],
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: '#bbff99',
-      borderRadius: 20,
-      borderWidth: 0
+      tension: 0.3,
+      showLine: false
     },
     {
       fill: true,
@@ -70,8 +79,8 @@ const data = {
       data: Germany[0],
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: '#c2c2f0',
-      borderRadius: 20,
-      borderWidth: 0
+      tension: 0.3,
+      showLine: false
     },
   ],
 };

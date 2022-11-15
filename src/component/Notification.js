@@ -12,11 +12,11 @@ const Notification = () => {
         <List
                 itemLayout="horizontal"
                 dataSource={chatData}
-                renderItem={(item) => (
-                    <List.Item>
+                renderItem={(item, ind) => (
+                    <List.Item key={ind}>
                         <List.Item.Meta
                             avatar={<Avatar size={50} src={item.image} />}
-                            title={<p className={`h6 ${cb}`}>{item.message}</p>}
+                            title={<p style={{color: 'rgb(94 126 139)'}}>{item.message}</p>}
                             description={<p className='text-muted'>{item.desc}</p>}
                         />
                         
