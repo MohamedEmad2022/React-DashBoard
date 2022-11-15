@@ -43,21 +43,22 @@ function App() {
             trigger={null}
             collapsedWidth={0}
             width={300}
-            
+
             style={{
               overflow: 'auto',
               height: '100vh',
+              position: "fixed",
               zIndex: '100',
               left: 0,
               top: 0,
               bottom: 0,
-              display: screenSize < 700 ? "none" : ''
+
             }}
           >
             <Sidbar />
           </Sider>
           <Layout
-            
+            style={{ marginLeft: activeMenu ? "0px" : "300px" }}
           >
             <Header
               className={`${currentMode === 'Dark' ? 'dark' : 'bg-transparent'}`}
@@ -95,6 +96,15 @@ function App() {
 
 
             </Content>
+            <Footer
+              className={`${currentMode === 'Dark' ? 'dark' : ''}`}
+              style={{
+                paddingTop: '30px',
+                textAlign: 'center',
+              }}
+              >
+              © 2022 All rights reserved by OmShoppy.com
+            </Footer>
           </Layout>
 
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import { Menu } from 'antd';
+import { Menu, Typography } from 'antd';
 import { links } from '../data/dummy';
 import { Link, NavLink } from 'react-router-dom';
 import { useStateContext } from '../Context/ContextProvider';
@@ -15,10 +15,12 @@ const SideBar = () => {
 
 
                 <>
+                
                     <Menu 
                         theme={currentMode === 'Dark' ? 'dark' : 'light '}
                         className='ps-3'
                     >
+                        <Typography.Title style={{color: currentMode === 'Dark' ? 'White' : 'black'}}>OmShoppy</Typography.Title>
                         {links.map((item) => (
 
                             <Menu.ItemGroup key={item.title} title={item.title}
