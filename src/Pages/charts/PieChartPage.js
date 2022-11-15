@@ -39,7 +39,7 @@ const PieChartPage = () => {
       const labels = pieChartData.map((item) => item.x)
       
     return (
-        <Card className={cb} bordered={false}>
+        <Card className={`${cb} vh-98`} bordered={false}>
       <ChartHeader title="Project Cost Breakdown" category="Pie" />
         
         <Row justify='center'>

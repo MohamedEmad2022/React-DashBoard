@@ -9,7 +9,7 @@ const StackedChartPage = () => {
   const { currentMode } = useStateContext()
   const cb = currentMode === 'Dark' ? 'text-bg-dark' : 'text-bg-light'
   return (
-    <Card className={cb} bordered={false}>
+    <Card className={`${cb} vh-98`} bordered={false}>
       <ChartHeader title="Revenue Breakdown" category="Stacked" />
       <StackedChart />
     </Card>

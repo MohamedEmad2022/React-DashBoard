@@ -80,7 +80,7 @@ const ColorMaping = () => {
         ],
     };
   return (
-    <Card className={cb} bordered={false}>
+    <Card className={`${cb} vh-98`} bordered={false}>
             <ChartHeader title="USA CLIMATE - WEATHER BY MONTH" category="Color Mappping" />
             <Bar data={data} options={options} />
         </Card>

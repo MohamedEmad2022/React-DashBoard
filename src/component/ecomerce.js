@@ -79,7 +79,7 @@ const Ecomerce = () => {
         <Row>
           <Col>
             <Row justify="space-between">
-              <Col xl={6} md={8}>
+              <Col xl={6} md={8} sm={24} xs={24}>
                 <Card
                   className={`rounded-4 mt-1 ${cb}`}
                   bordered={false}
@@ -113,10 +113,10 @@ const Ecomerce = () => {
 
               </Col>
 
-              <Col xl={17} md={15}>
+              <Col xl={17} md={15} sm={24} xs={24}>
                 <Row justify="center">
                   {earningData.map((item, ind) => (
-                    <Col key={ind} xl={6} md={10}>
+                    <Col key={ind} xl={6} md={10} sm={11} xs={11}>
                       <Card key={item.title} className={`rounded-4 m-1 ${cb}`} bordered={false}>
 
                         <Row>
@@ -188,7 +188,7 @@ const Ecomerce = () => {
               </Col>
               <Col xl={7} md={24} sm={24}>
                 <Row justify="space-between">
-                  <Col xl={24} md={11} className='mt-4'>
+                  <Col xl={24} md={11} sm={11} xs={24} className='mt-4'>
                     <Card bodyStyle={{ backgroundColor: '#4d94ff', borderRadius: "17px"}}
                       className="shadow-sm bg-body rounded-4"
                       bordered={false}
@@ -205,7 +205,7 @@ const Ecomerce = () => {
                       <BarChart data={SparklineAreaData} />
                     </Card>
                   </Col>
-                  <Col className='mt-4' xl={24} md={11}>
+                  <Col className='mt-4' xl={24} md={11} sm={11} xs={24}>
                     <Card className={`rounded-4 h-100 ${cb}`}
                       bordered={false}
                     >
@@ -231,7 +231,7 @@ const Ecomerce = () => {
         <Row justify='center'>
           <Col xl={24} md={20}>
             <Row justify="space-between">
-              <Col className='mt-4' xl={10} md={24} sm={24}>
+              <Col className='mt-4' xl={10} md={24} sm={24} xs={24}>
                 <Card className={`rounded-4 ${cb}`} bordered={false}>
 
                   <Lists data={recentTransactions}
@@ -259,7 +259,7 @@ const Ecomerce = () => {
 
                 </Card>
               </Col>
-              <Col className='mt-4' xl={13} md={24} >
+              <Col className='mt-4' xl={13} md={24} xs={24} >
                 <Card className={`shadow-sm rounded-4 h-100 ${cb}`} bordered={false}>
                   <Row>
                     <Col span={24}>
@@ -287,7 +287,7 @@ const Ecomerce = () => {
         <Row justify='center'>
           <Col xl={24} md={20}>
             <Row justify="space-between" gutter={3}>
-              <Col className='mt-4' xl={7} md={12} sm={24}>
+              <Col className='mt-4' xl={7} md={12} sm={24} xs={24}>
                 <Card className={`shadow-sm rounded-4 ${cb}`} bordered={false}>
                   <Lists data={weeklyStats}
                     header={
@@ -313,7 +313,7 @@ const Ecomerce = () => {
                 </Card>
               </Col>
 
-              <Col xl={7} md={12} sm={24} className='mt-4'>
+              <Col xl={7} md={12} sm={24} xs={24} className='mt-4'>
                 <Card className={`shadow-sm rounded-4 h-100 ${cb}`} bordered={false}>
                   <Row align='middle'>
                     <Col span={24}>
@@ -374,7 +374,7 @@ const Ecomerce = () => {
                   </Row>
                 </Card>
               </Col>
-              <Col className='mt-4' xl={7} md={12} sm={24}>
+              <Col className='mt-4' xl={7} md={12} sm={24} xs={24}>
                 <Card className={`shadow-sm rounded-4 h-100 ${cb}`} bordered={false}>
                   <Row>
                     <Col span={24}>
