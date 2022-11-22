@@ -28,3 +28,6 @@
     background-color: transparent;
   }
   
+  .card{
+    max-height: 60vh;
+  }

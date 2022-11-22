@@ -11,7 +11,7 @@ const LineChartPage = () => {
     
   return (
     
-    <Card className={`${cb} vh-98`} bordered={false}>
+    <Card className={`${cb}`} bordered={false}>
       <ChartHeader title="Inflation Rate" category="Line" />
         <LineChart />
     </Card>

@@ -3,12 +3,12 @@ import React from 'react'
 import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData, pieChartData } from '../data/dummy';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { IoIosMore } from 'react-icons/io';
-import Doughnut from './charts/DoughnutChart';
-import BarChart from './charts/BarChart';
+import Doughnut from '../component/charts/DoughnutChart';
+import BarChart from '../component/charts/BarChart';
 import { useStateContext } from '../Context/ContextProvider';
-import StackedChart from './charts/StackedChart';
-import SparkLineChart from './charts/SparkLineChart';
-import LineChart from './charts/LineChart';
+import StackedChart from '../component/charts/StackedChart';
+import SparkLineChart from '../component/charts/SparkLineChart';
+import LineChart from '../component/charts/LineChart';
 import product9 from '../data/product9.jpg';
 
 

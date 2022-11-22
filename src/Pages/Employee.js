@@ -150,15 +150,11 @@ const Employees = () => {
 
 
           const onSearch = (value) => {
-
-            // setSearchText(value)
+  
+            const filtering = data.filter(item => item.Name.includes(value.charAt(0).toUpperCase() + value.slice(1)))
             
-            return employeesData.map(item => item.Name.includes(value))
-            // if(value){
-            //   setData(filtering)
-            // }else{
-            //   setData(data)
-            // }
+            setData(filtering.length > 0 ? filtering : dataWithKeys)
+            
           };
 
         

@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidbar from './component/sidebar';
 import NavBar from './component/NavBar';
-import Ecomerce from './component/ecomerce';
 import { useStateContext } from './Context/ContextProvider';
 import { useEffect, useState } from 'react';
 import { Col, Layout, Row } from 'antd';
@@ -18,6 +17,7 @@ import FinancialPage from './Pages/charts/FinancialPage';
 import ColorMaping from './Pages/charts/ColorMaping';
 import StackedChartPage from './Pages/charts/stackedChartPage';
 import Kanban from './Pages/Kanban';
+import Ecomerce from './Pages/ecomerce';
 
 function App() {
 

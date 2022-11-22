@@ -2,6 +2,7 @@ import { Menu, Typography } from 'antd';
 import { links } from '../data/dummy';
 import { Link, NavLink } from 'react-router-dom';
 import { useStateContext } from '../Context/ContextProvider';
+import { ShopOutlined } from '@ant-design/icons';
 
 const SideBar = () => {
     const { currentMode } = useStateContext();
@@ -20,7 +21,7 @@ const SideBar = () => {
                         theme={currentMode === 'Dark' ? 'dark' : 'light '}
                         className='ps-3'
                     >
-                        <Typography.Title style={{color: currentMode === 'Dark' ? 'White' : 'black'}}>OmShoppy</Typography.Title>
+                        <Typography.Title style={{color: currentMode === 'Dark' ? 'White' : 'black'}}><ShopOutlined />Shoppy</Typography.Title>
                         {links.map((item) => (
 
                             <Menu.ItemGroup key={item.title} title={item.title}

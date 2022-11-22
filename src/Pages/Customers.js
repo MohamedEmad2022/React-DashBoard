@@ -36,7 +36,7 @@ const Customer = () => {
       const delHandeler = ()=>{
         if(hasSelected){
           const del = data.filter(item =>(
-             item.key !== selectedRowKeys.map(it => it)
+            !selectedRowKeys.includes(item.key)  
           ))
           setData(del)
         }
